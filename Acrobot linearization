@@ -1,0 +1,9 @@
+% Ищем A и B с помощью Drake
+p = PlanarRigidBodyManipulator('Acrobot.urdf');
+[f,df] = p.dynamics(t,x,u);
+A = f(:,2:5);
+B = f(:,6);
+% Q и R произвольные 
+Q = [1 3; 2 1]
+R = 3;
+[K,S] = lqr(A,B,Q,R);
